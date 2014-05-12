@@ -11,7 +11,7 @@ describe AppConfig do
         end
 
         it "is valid if it's empty string" do
-          AppConfig.new(value_type: 'string', value: 'some string').should be_valid
+          AppConfig.new(value_type: 'string', value: '').should be_valid
         end
 
         it "is invalid if it's integer" do
@@ -32,7 +32,7 @@ describe AppConfig do
           AppConfig.new(value_type: 'integer', value: '100.500').should_not be_valid
         end
 
-        it "is invalid if it's not string" do
+        it "is invalid if it's integer" do
           AppConfig.new(value_type: 'integer', value: 100500).should_not be_valid
         end
 
@@ -50,11 +50,11 @@ describe AppConfig do
           AppConfig.new(value_type: 'boolean', value: 'false').should be_valid
         end
 
-        it "is invalid if it'string, with number" do
+        it "is invalid if it's string with number" do
           AppConfig.new(value_type: 'boolean', value: '100500').should_not be_valid
         end
 
-        it "is invalid if it'string, with random string" do
+        it "is invalid if it'string, with random data" do
           AppConfig.new(value_type: 'boolean', value: 'random').should_not be_valid
         end
 

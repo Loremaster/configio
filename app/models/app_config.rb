@@ -18,9 +18,7 @@ class AppConfig < ActiveRecord::Base
         value.is_a?(String) && is_float?(value) && value.include?(".")
     end
 
-    if validation_res == false
-      errors.add(:value, "contains invalid data")
-    end
+    errors.add(:value, "contains invalid data") if validation_res == false
   end
 
   def is_num?(str)
