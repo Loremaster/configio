@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20140512210408) do
 
   create_table "app_configs", force: true do |t|
-    t.string   "type"
+    t.string   "value_type"
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
