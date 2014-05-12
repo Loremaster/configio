@@ -1,0 +1,25 @@
+legend
+  | List of existing configurations
+  = link_to "New config", new_app_config_path, class: 'btn btn-primary right-float'
+
+
+- if @app_configs.size > 0
+  table.table.table-striped
+    thead
+      tr
+        th Value
+        th Type
+    tbody
+      tr
+        - @app_configs.each do |conf|
+          td= conf.value
+          td= conf.value_type
+- else
+  .well
+    | No configs yet,
+    = link_to " add them ", new_app_config_path
+    |!
+
+
+
+
