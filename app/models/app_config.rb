@@ -4,7 +4,7 @@ class AppConfig < ActiveRecord::Base
   validates :value_type, inclusion: { in: AVAILABLE_TYPES }
   validate :value_contains_correct_data
 
-  def value
+  def pretty_value
     current_value = read_attribute(:value)
 
     if value_type == 'boolean'

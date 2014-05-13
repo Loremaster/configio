@@ -3,6 +3,26 @@ require 'spec_helper'
 describe AppConfig do
   it { should ensure_inclusion_of(:value_type).in_array(AppConfig::AVAILABLE_TYPES) }
 
+  describe "methods" do
+    let(:conf) { FactoryGirl.create(:app_config) }
+
+    describe "pretty_value" do
+      it "should return string value if it is not boolean" do
+        conf.pretty_value.should == 'some string'
+      end
+
+      it "should return true if value is '1'" do
+        b_conf = FactoryGirl.create(:bool_app_config, value: '1')
+        b_conf.pretty_value.should == true
+      end
+
+      it "should return false if value is '0'" do
+        b_conf = FactoryGirl.create(:bool_app_config, value: '0')
+        b_conf.pretty_value.should == false
+      end
+    end
+  end
+
   describe "custom validations" do
     describe "value" do
       describe "string" do

@@ -13,7 +13,7 @@ legend
     tbody
       - @app_configs.each do |conf|
         tr
-          td= conf.value
+          td= conf.pretty_value
           td= conf.value_type
           td= conf.created_at
           td
