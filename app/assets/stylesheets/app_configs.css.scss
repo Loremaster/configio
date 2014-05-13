@@ -5,3 +5,12 @@
 .right-float{
   float: right;
 }
+
+a.destroy_link{
+  color: red;
+
+  &:hover{
+    color: red;
+  }
+}
+

@@ -19,7 +19,7 @@ legend
           td
             = link_to "Edit", edit_app_config_path(conf)
             | &nbsp;
-            = link_to "Delete", conf, method: :delete
+            = link_to "Delete", conf, method: :delete, class: "destroy_link"
 - else
   .well
     | No configs yet,
