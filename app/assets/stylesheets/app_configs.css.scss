@@ -6,11 +6,15 @@
   float: right;
 }
 
-a.destroy_link{
+a.destroy-link{
   color: red;
+  text-decoration: underline;
 
   &:hover{
     color: red;
   }
 }
 
+a.edit-link{
+ text-decoration: underline;
+}

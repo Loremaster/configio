@@ -17,9 +17,9 @@ legend
           td= conf.value_type
           td= conf.created_at
           td
-            = link_to "Edit", edit_app_config_path(conf)
+            = link_to "Edit", edit_app_config_path(conf), class: 'edit-link'
             | &nbsp;
-            = link_to "Delete", conf, method: :delete, class: "destroy_link"
+            = link_to "Delete", conf, method: :delete, class: "destroy-link"
 - else
   .well
     | No configs yet,
