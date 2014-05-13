@@ -60,4 +60,16 @@ describe AppConfigsController do
       flash[:notice].should eq "Configuration deleted."
     end
   end
+
+  describe "GET 'search'" do
+    it "should render page" do
+      get :search, q: conf.value
+      response.should be_success
+    end
+
+    it "should find data" do
+      get :search, q: conf.value
+      expect(assigns(:app_configs)).to include(conf)
+    end
+  end
 end

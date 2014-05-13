@@ -3,7 +3,7 @@ class AppConfigsController < ApplicationController
   before_action :find_app_config, only: [:edit, :update, :destroy]
 
   def index
-    @app_configs = AppConfig.cached_all
+    @app_configs = AppConfig.cached_all.order(:updated_at)
   end
 
   def new
@@ -39,6 +39,11 @@ class AppConfigsController < ApplicationController
     end
 
     redirect_to app_configs_path
+  end
+
+  def search
+    @app_configs = AppConfig.where('value LIKE ? OR value_type LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+    render :index
   end
 
   private
