@@ -1,0 +1,9 @@
+- if params[:action] == 'search'
+  = link_to app_configs_path, class: 'btn' do
+    i.icon-arrow-left
+    | &nbsp;
+    = "Back to all configs"
+
+= form_tag(search_app_configs_path, method: :get, class: "navbar-form pull-right search-form")
+  = text_field_tag 'q', params[:q], placeholder: 'Search by value or type...', class: 'search-input'
+  = submit_tag "Search", class: 'btn'

@@ -5,9 +5,7 @@ legend
 .container-fluid
   .row-fluid
     .span12
-      = form_tag(search_app_configs_path, method: :get, class: "navbar-form pull-right search-form")
-        = text_field_tag 'q', params[:q], placeholder: 'Search by value or type...', class: 'search-input'
-        = submit_tag "Search", class: 'btn'
+      = render 'search_form'
 
       - if @app_configs.size > 0
         table.table.table-striped
@@ -29,16 +27,17 @@ legend
                   = link_to "Edit", edit_app_config_path(conf), class: 'edit-link'
                   | &nbsp;
                   = link_to "Delete", conf, method: :delete, class: "destroy-link"
-    .span12
-      - if @app_configs.size == 0
-        - if params[:action] == 'index'
-          .well
-            | No configs yet,
-            | &nbsp;
-            = link_to "add them", new_app_config_path
-            |&nbsp;!
-        - elsif params[:action] == 'search'
-          .well We are sorry, but we can't find any data by provided query. Please, try another one.
+    .row-fluid
+      .span12
+        - if @app_configs.size == 0
+          - if params[:action] == 'index'
+            .well
+              | No configs yet,
+              | &nbsp;
+              = link_to "add them", new_app_config_path
+              | &nbsp;!
+          - elsif params[:action] == 'search'
+            .well We are sorry, but we can't find any data by provided query. Please, try another one.
 
 
 
