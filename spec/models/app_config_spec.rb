@@ -43,15 +43,19 @@ describe AppConfig do
 
       describe "boolean type" do
         it "is valid if it's 'true'" do
-          AppConfig.new(value_type: 'boolean', value: 'true').should be_valid
+          AppConfig.new(value_type: 'boolean', value: '1').should be_valid
         end
 
         it "is valid if it's 'false'" do
-          AppConfig.new(value_type: 'boolean', value: 'false').should be_valid
+          AppConfig.new(value_type: 'boolean', value: '0').should be_valid
         end
 
-        it "is invalid if it's string with number" do
-          AppConfig.new(value_type: 'boolean', value: '100500').should_not be_valid
+        it "is valid if it's 'true'" do
+          AppConfig.new(value_type: 'boolean', value: 'true').should_not be_valid
+        end
+
+        it "is valid if it's 'false'" do
+          AppConfig.new(value_type: 'boolean', value: 'false').should_not be_valid
         end
 
         it "is invalid if it'string, with random data" do
@@ -70,8 +74,12 @@ describe AppConfig do
           AppConfig.new(value_type: 'boolean', value: false).should_not be_valid
         end
 
-        it "is invalid if it's integer" do
-          AppConfig.new(value_type: 'boolean', value: 100500).should_not be_valid
+        it "is invalid if it's 1" do
+          AppConfig.new(value_type: 'boolean', value: 1).should_not be_valid
+        end
+
+        it "is invalid if it's 0" do
+          AppConfig.new(value_type: 'boolean', value: 0).should_not be_valid
         end
 
         it "is invalid if it's nil" do

@@ -4,6 +4,16 @@ class AppConfig < ActiveRecord::Base
   validates :value_type, inclusion: { in: AVAILABLE_TYPES }
   validate :value_contains_correct_data
 
+  def value
+    current_value = read_attribute(:value)
+
+    if value_type == 'boolean'
+      to_bool(current_value)
+    else
+      current_value
+    end
+  end
+
   private
 
   def value_contains_correct_data
@@ -30,6 +40,14 @@ class AppConfig < ActiveRecord::Base
   end
 
   def is_bool?(str)
-    str == 'true' || str == 'false'
+    str == '1' || str == '0'
+  end
+
+  def to_bool(str)
+    if str == '1'
+      true
+    elsif str == '0'
+      false
+    end
   end
 end
