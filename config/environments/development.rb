@@ -26,4 +26,9 @@ Configio::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # This cache store keeps entries in memory in the same Ruby process.
+  # The cache store has a bounded size specified by the :size options to the initializer (default is 32Mb).
+  # When the cache exceeds the allotted size, a cleanup will occur and the least recently used entries will be removed.
+  config.cache_store = :memory_store, { size: 64.megabytes }
 end

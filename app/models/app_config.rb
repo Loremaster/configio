@@ -1,8 +1,14 @@
 class AppConfig < ActiveRecord::Base
   AVAILABLE_TYPES = %w(string integer float boolean)
 
+  after_commit :flush_cache
+
   validates :value_type, inclusion: { in: AVAILABLE_TYPES }
   validate :value_contains_correct_data
+
+  def self.cached_all
+    Rails.cache.fetch("app_config_all") { AppConfig.all }
+  end
 
   def pretty_value
     current_value = read_attribute(:value)
@@ -49,5 +55,9 @@ class AppConfig < ActiveRecord::Base
     elsif str == '0'
       false
     end
+  end
+
+  def flush_cache
+    Rails.cache.delete("app_config_all")
   end
 end

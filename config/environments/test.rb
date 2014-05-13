@@ -33,4 +33,10 @@ Configio::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # This cache store implementation is meant to be used only in development or test environments and it never stores anything.
+  # This can be very useful in development when you have code that interacts directly with Rails.cache,
+  # but caching may interfere with being able to see the results of code changes.
+  # With this cache store, all fetch and read operations will result in a miss.
+  config.cache_store = :null_store
 end

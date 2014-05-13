@@ -3,7 +3,7 @@ class AppConfigsController < ApplicationController
   before_action :find_app_config, only: [:edit, :update, :destroy]
 
   def index
-    @app_configs = AppConfig.all
+    @app_configs = AppConfig.cached_all
   end
 
   def new
