@@ -1,0 +1,6 @@
+legend New configuration
+
+= simple_form_for @app_config do |f|
+  = render 'fields', f: f
+
+  = f.submit 'Create config', class: 'btn btn-primary'
