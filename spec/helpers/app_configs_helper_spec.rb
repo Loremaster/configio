@@ -11,5 +11,28 @@ require 'spec_helper'
 #   end
 # end
 describe AppConfigsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "active_link?" do
+    it "returns empty string for input empty string" do
+      expect(helper.active_link?("")).to eq("")
+    end
+
+    describe "stubbed" do
+      before(:each) do
+        controller.stub(:controller_name).and_return('city')
+        controller.stub(:action_name).and_return('index')
+      end
+
+      it "returns empty string if current controller and action isn't active link" do
+        expect(helper.active_link?("pages#home")).to eq("")
+      end
+
+      it "returns empty string if if '#' devider is not provided" do
+        expect(helper.active_link?("cityindex")).to eq("")
+      end
+
+      it "returns 'active' if current page is active" do
+        expect(helper.active_link?("city#index")).to eq("active")
+      end
+    end
+  end
 end

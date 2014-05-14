@@ -41,6 +41,11 @@
       <div class="navbar-inner">
         <div class="container-fluid">
           <%= link_to "Configio", root_path, class: "brand" %>
+          <ul class="nav">
+            <li class=<%= "#{active_link?('app_configs#index')}" %>>
+              <%= link_to "List of configs", app_configs_path %>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
